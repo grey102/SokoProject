@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class Box : MonoBehaviour
 {
+
+
     void Update()
     {
+
         GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
         foreach (var bomb in bombs)
         {
@@ -17,21 +20,7 @@ public class Box : MonoBehaviour
                 return;
             }
         }
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (Input.GetKey(KeyCode.UpArrow))
-            transform.Translate(Vector2.up);
-
-        if (Input.GetKey(KeyCode.DownArrow))
-            transform.Translate(Vector2.down);
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-            transform.Translate(Vector2.left);
-
-        if (Input.GetKey(KeyCode.RightArrow))
-            transform.Translate(Vector2.right);
 
     }
+
 }
