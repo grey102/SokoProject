@@ -14,7 +14,11 @@ public class Box : MonoBehaviour
                  GetComponent<SpriteRenderer>().color = Color.red;
                  return;
               }
-       }
+          else
+              {
+                GetComponent<SpriteRenderer>().color = Color.white;
+              }
+        }
     }
 
 

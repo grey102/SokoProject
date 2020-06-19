@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 	public static int target { get; set; }
 	private Vector3 direction, targetPos;
 	private bool isMove;
+	public GameObject Canvas;
 
 	void Awake()
 	{
@@ -29,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 	void Complete()
 	{
 		Debug.Log("! You Win !");
+		Canvas.SetActive(true);
 	}
 
 	void Update()
@@ -88,6 +88,11 @@ public class PlayerMovement : MonoBehaviour
 		return val;
 	}
 
+	public void RestartGame()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+	}
+
 	void Control()
 	{
 		if (isMove)
@@ -107,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
 				if (target == targetCount)
 				{
 					Complete();
-					enabled = false;
+					//enabled = false;
 				}
 			}
 
@@ -129,6 +134,10 @@ public class PlayerMovement : MonoBehaviour
 		else if (Input.GetKey(KeyCode.S))
 		{
 			direction = Vector3.down;
+		}
+		else if (Input.GetKey(KeyCode.R))
+		{
+			RestartGame();
 		}
 		else
 		{
